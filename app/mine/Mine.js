@@ -127,23 +127,26 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#dddddd'
     },
+    //titlebar样式
     titleBarStyle: {
-        height: 45,
+        height: 47,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         backgroundColor: '#eeeeee',
         borderBottomWidth: 1.5,
         borderBottomColor: '#dddddd'
-
     },
+    //左边文本样式
     leftTitleStyle: {
         color: 'orange',
         marginLeft: 10
     },
+    //中间文本样式
     titleBarCenterTitleStyle: {
         color: 'black'
     },
+    //右边图片样式
     topbarRightIconStyle: {
         width: 22,
         height: 22,
