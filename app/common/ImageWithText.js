@@ -22,8 +22,6 @@ var ImageWithText = React.createClass({
     },
     render(){
         return(
-
-
             <View style={styles.imgViewStyle}>
                 <Image  source={{uri:this.props.imgRes}} style={styles.imgStyle}></Image>
                 <Text>{this.props.imgDes}</Text>
