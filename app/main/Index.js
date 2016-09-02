@@ -8,10 +8,11 @@ import {
     StyleSheet,
     View,
     Text,
-    Image
+    Image,
+    Navigator
 } from 'react-native'
 
- import TabNavigator from 'react-native-tab-navigator';
+import TabNavigator from 'react-native-tab-navigator';
 
 var Home = require('../home/Home');
 var Preferentail = require('../preferential/Preferentail');
@@ -36,7 +37,17 @@ var Index = React.createClass({
                     onPress={() => this.setState({ selectedTab: 'home' })}
                     selectedTitleStyle={styles.tabTitleStyle}
                 >
-                    <Home/>
+                    <Navigator
+                        initialRoute={{name:'home',component:Home}}
+                        configureScene={()=>{
+                            return Navigator.SceneConfigs.PushFromRight;
+                        }}
+
+                        renderScene={(route,navigator)=>{
+                            let Component = route.component;
+                            return <Component {...route.passProps} navigator={navigator} />;
+                        }}
+                    />
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     title="品质优惠"
@@ -46,7 +57,17 @@ var Index = React.createClass({
                     onPress={() => this.setState({ selectedTab: 'pre' })}
                     selectedTitleStyle={styles.tabTitleStyle}
                 >
-                    <Preferentail/>
+                    <Navigator
+                        initialRoute={{name:'pre',component:Preferentail}}
+                        configureScene={()=>{
+                            return Navigator.SceneConfigs.PushFromRight;
+                        }}
+
+                        renderScene={(route,navigator)=>{
+                            let Component = route.component;
+                            return <Component {...route.passProps} navigator={navigator} />
+                        }}
+                    />
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     title="发现"
@@ -56,7 +77,17 @@ var Index = React.createClass({
                     onPress={() => this.setState({ selectedTab: 'find' })}
                     selectedTitleStyle={styles.tabTitleStyle}
                 >
-                    <Find/>
+                    <Navigator
+                        initialRoute={{name:'find',component:Find}}
+                        configureScene={()=>{
+                            return Navigator.SceneConfigs.PushFromRight;
+                        }}
+
+                        renderScene={(route,navigator)=>{
+                            let Component = route.component;
+                            return <Component {...route.passProps} navigator={navigator} />
+                        }}
+                    />
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     title="我的"
@@ -65,11 +96,28 @@ var Index = React.createClass({
                     selected={this.state.selectedTab === 'mine'}
                     onPress={() => this.setState({ selectedTab: 'mine' })}
                     selectedTitleStyle={styles.tabTitleStyle}
-                    badgeText="9"
+                    renderBadge={()=>this.renderBadge()}
                 >
-                    <Mine/>
+                    <Navigator
+                        initialRoute={{name:'mine',component:Mine}}
+                        configureScene={()=>{
+                            return Navigator.SceneConfigs.PushFromRight;
+                        }}
+
+                        renderScene={(route,navigator)=>{
+                            let Component = route.component;
+                            return <Component {...route.passProps} navigator={navigator} />
+                        }}
+                    />
                 </TabNavigator.Item>
             </TabNavigator>
+        );
+    },
+    renderBadge(){
+        return(
+            <View style={styles.badgeView}>
+                <Text style={styles.badgeText}>9</Text>
+            </View>
         );
     }
 }) ;
@@ -81,6 +129,22 @@ const  styles = StyleSheet.create({
     },
     tabTitleStyle:{
         color:'orange'
+    },
+    badgeView:{
+        width:24,
+        height:18 ,
+        backgroundColor:'red',
+        borderWidth:1.5,
+        marginLeft:11,
+        marginTop:3,
+        borderColor:'#FFF',
+        alignItems:'center',
+        justifyContent:'center',
+        borderRadius:8,
+    },
+    badgeText:{
+        color:'#fff',
+        fontSize:8,
     }
 });
 module.exports = Index
