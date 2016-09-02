@@ -119,8 +119,8 @@ var Home = React.createClass({
         return imgInfoViews ;
     },
     omItemClick:function (text,position) {
-        switch (position){
-            case 0:
+        switch (text){
+            case '美食':
                 this.props.navigator.push({
                     component:Food
                 }) ;
