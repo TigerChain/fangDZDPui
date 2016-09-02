@@ -1,5 +1,5 @@
 ###这是一个仿大众点评的react-native项目
 
-### 效果图：
+### 部分效果图：(后续会更新)
 
 ![screen](./shortscreen/screen.gif)
