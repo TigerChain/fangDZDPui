@@ -210,7 +210,8 @@ const styles = StyleSheet.create({
     //目前没有发现TextInput可以设置背景图片,TextInput设置圆角不起作用,所以放在圆角view中并且其背景是透明的完美解决圆角TextInput
     titleCenterTextInputStyle: {
         flex: 1,
-        backgroundColor: "#00000000"
+        backgroundColor: "#00000000",
+        height:31
     },
     //gridView的样式
     gridViewStyle: {
