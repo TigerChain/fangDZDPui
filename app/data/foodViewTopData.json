@@ -1,0 +1,12 @@
+{
+      "imginfo":[
+        {"icon":"meishi","title":"火锅"},
+        {"icon":"dianying","title":"自助餐"},
+        {"icon":"jiudian","title":"西餐"},
+        {"icon":"xiuxianyule","title":"小吃快餐"},
+        {"icon":"waimai","title":"海鲜"},
+        {"icon":"zizhucan","title":"日本料理"},
+        {"icon":"liren","title":"川菜"},
+        {"icon":"dujia","title":"烧烤"}
+      ]
+}
