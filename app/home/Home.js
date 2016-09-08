@@ -24,7 +24,7 @@ var screenWidth = Dimensions.get('window').width;
 //每行显示的图片数
 var clos = 5;
 //包含图片view的宽度
-var itemViewHeight = 60;
+var itemViewHeight = 63;
 //水平间距
 var hMargin = (screenWidth - clos * itemViewHeight) / (clos + 1);
 //垂直间距
@@ -39,24 +39,54 @@ var Food = require('./food/Food');
 
 var NewPersonItem = require('./NewPersonItem');
 
+//引入加载条
+import Loading from '../common/Loading' ;
+
 var Home = React.createClass({
 
-    render: function () {
-        return (
-            <View style={styles.container}>
-                {this.rednerTitleBar()}
-                <ScrollView>
-                    <IndicatorViewPager
-                        style={{height: 180}}
-                        indicator={this.renderDotIndicator()}
-                    >
-                        {this.renderViewPager()}
-                    </IndicatorViewPager>
+    getInitialState(){
+        return {
+            //默认为加载
+            isLoading: true
+        }
+    },
 
-                    {this.renderNewPerson()}
-                </ScrollView>
-            </View>
-        );
+    render: function () {
+        //如果是加载的话就显示加载条
+        if (this.state.isLoading) {
+            return (
+                <Loading/>
+            );
+        } else {
+            return (
+                <View style={styles.container}>
+                    {this.rednerTitleBar()}
+                    <ScrollView>
+                        <IndicatorViewPager
+                            style={{height: 200}}
+                            indicator={this.renderDotIndicator()}
+                        >
+                            {this.renderViewPager()}
+                        </IndicatorViewPager>
+
+                        {this.renderNewPerson()}
+                    </ScrollView>
+                </View>
+            );
+        }
+
+    },
+
+    componentDidMount() {
+        //setState()方法重新刷新界面改变loading值
+        this.timer = setTimeout(() => {
+                //状态改变会重新调用 render() 通过differ算法来算出修改过的dom来渲染
+                this.setState({isLoading: false})
+            }, 1000)
+    },
+    //清除定时器 一定要清除
+    componentWillUnMount() {
+            this.timer && clearTimeout(this.timer)
     },
     //生成titleBar
     rednerTitleBar: function () {
@@ -162,7 +192,7 @@ var Home = React.createClass({
     renderTopView: function () {
         return (
             <View style={styles.newTopViewStyle}>
-                <Image></Image>
+                <Image source={{uri:'main_home_new_icon_sale'}} style={{width:20,height:18,marginRight:5}}></Image>
                 <Text style={{fontSize: 18, color: 'white'}}>新人专区</Text>
             </View>
         );
@@ -220,7 +250,7 @@ const styles = StyleSheet.create({
     titleCenterTextInputStyle: {
         flex: 1,
         backgroundColor: "#00000000",
-        height: 32
+        height: 40
     },
     //viewPager样式
     viewPagerStyle: {

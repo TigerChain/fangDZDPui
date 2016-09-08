@@ -26,7 +26,7 @@ var HomeTopItemView = require('../HomeTopItemView');
 //每行显示的图片数
 var clos = 4;
 //包含图片view的宽度
-var itemViewHeight = 60;
+var itemViewHeight = 65;
 //水平间距
 var hMargin = (screenWidth - clos * itemViewHeight) / (clos + 1);
 //垂直间距
@@ -37,16 +37,23 @@ var ToastAndroid = require('ToastAndroid');
 //取得中间的分类组件
 var CategoryView = require('./CategoryView');
 
+import  ListItemView from './ListItemView' ;
 
-var datas = ['1', '2', '3', '4', '1', '2', '3', '4', '1', '2', '3', '4', '1', '2', '3', '4', '1', '2', '3', '4', '1', '2', '3', '4'];
 
 var Food = React.createClass({
 
     getInitialState(){
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         return {
-            dataSource: ds.cloneWithRows(datas),
+            dataSource: ds.cloneWithRows(this.getData()),
         };
+    },
+    getData: function () {
+        var dataBlob = [];
+        for (let i = 0; i < 20; i++) {
+            dataBlob.push("haha" + i);
+        }
+        return dataBlob;
     },
     render: function () {
 
@@ -169,11 +176,39 @@ var Food = React.createClass({
                 onPress={()=> {
                     ToastAndroid.show('你点击了 ' + rowID, ToastAndroid.SHORT)
                 }}>
-                <View style={{backgroundColor: 'white', marginTop: 3}}>
-                    <Text>{rowData}</Text>
-                </View>
+                {this.renderListItemView(rowData,rowID)}
             </TouchableOpacity>
         );
+    },
+    //渲染每一个条目,如果是第一条的话,那么没有marginTop
+    renderListItemView:function (rowData,rowID) {
+        if(rowID==0){
+            return(
+                <View>
+                    <ListItemView
+                        itemRenderIcon="zuliaoanmo"
+                        itemLeftTitle='聚宾楼烤鸭'
+                        itemCenterTitle='126人'
+                        itemBelowCentenTitle='唐洋路'
+                        itemAlignRightBelowCenterTitle='北京菜'
+                        itemRightKm='1.3km'>
+                    </ListItemView>
+                </View>
+            );
+        }else{
+            return(
+                <View style={{marginTop:3}}>
+                    <ListItemView
+                        itemRenderIcon="zuliaoanmo"
+                        itemLeftTitle='聚宾楼烤鸭'
+                        itemCenterTitle='126人'
+                        itemBelowCentenTitle='唐洋路'
+                        itemAlignRightBelowCenterTitle='北京菜'
+                        itemRightKm='1.3km'>
+                    </ListItemView>
+                </View>
+            );
+        }
     }
 });
 
@@ -199,7 +234,7 @@ const styles = StyleSheet.create({
     //为了实现圆角输入框,加了一个圆角view
     titleCenterViewStyle: {
         backgroundColor: 'white',
-        height: 31,
+        height: 32,
         width: screenWidth * 0.87,
         borderRadius: 15,
         justifyContent: 'center',
@@ -211,7 +246,7 @@ const styles = StyleSheet.create({
     titleCenterTextInputStyle: {
         flex: 1,
         backgroundColor: "#00000000",
-        height:31
+        height: 40
     },
     //gridView的样式
     gridViewStyle: {
@@ -238,7 +273,9 @@ const styles = StyleSheet.create({
         marginTop: 8,
         alignItems: 'center',
         paddingTop: 10,
-        paddingBottom: 10
+        paddingBottom: 10,
+        borderBottomWidth:0.8,
+        borderBottomColor:'#dddddd'
     }
 });
 
