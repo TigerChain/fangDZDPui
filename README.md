@@ -2,4 +2,4 @@
 
 ### 部分效果图：(后续会更新)
 
-![screen](./shortscreen/screen.gif)
+![screen](./shortscreen/screen01.gif)
