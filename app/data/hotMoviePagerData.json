@@ -1,0 +1,91 @@
+{
+  "data": [
+    {
+      "movieInfo": [
+        {
+          "imgUrl": "http://p0.meituan.net/148.208/movie/7a1ab391b0d4261f38947f902c921bc4909744.jpg",
+          "title": "星际迷航3：超越星辰",
+          "score": "8.3"
+        },
+        {
+          "imgUrl": "http://p1.meituan.net/148.208/movie/5fe796fb15d02612e3c15f48ecc7b38e704661.jpg",
+          "title": "鲨滩",
+          "score": ""
+        },
+        {
+          "imgUrl": "http://p0.meituan.net/148.208/movie/1ead6be0be6cf122a38bfe18e47acba1221793.jpg",
+          "title": "九条命",
+          "score": ""
+        },
+        {
+          "imgUrl": "http://p0.meituan.net/148.208/movie/337985da4efdb756f9c8395d02b445f0413246.jpg",
+          "title": "魔法老师",
+          "score": ""
+        },
+        {
+          "imgUrl": "http://p1.meituan.net/148.208/movie/51d01aa7961321e41af3e40146b42b89103531.jpg",
+          "title": "冰川时代5：星际碰撞",
+          "score": "8.5"
+        }
+      ]
+    },
+    {
+      "movieInfo": [
+        {
+          "imgUrl": "http://p1.meituan.net/148.208/movie/c5c37139438c203a623e95d71a0181f0919589.jpg",
+          "title": "大活西游3",
+          "score": ""
+        },
+        {
+          "imgUrl": "http://p1.meituan.net/148.208/movie/9e3533ca6d216db222f5c668f34549fd281300.jpg",
+          "title": "反贪风暴2",
+          "score": ""
+        },
+        {
+          "imgUrl": "http://p1.meituan.net/148.208/movie/8ac3250b120404fce93219315084bf93655383.jpg",
+          "title": "追凶者也",
+          "score": ""
+        },
+        {
+          "imgUrl": "http://p0.meituan.net/148.208/movie/a6c70dab4116c5451305eea62e0a450f8684551.jpg",
+          "title": "麦兜·饭宝奇兵",
+          "score": ""
+        },
+        {
+          "imgUrl": "http://p1.meituan.net/148.208/movie/62c520abc28ac1826fde23640077ee7d1067367.jpg",
+          "title": "长江图",
+          "score": ""
+        }
+      ]
+    },
+    {
+      "movieInfo": [
+        {
+          "imgUrl": "http://p1.meituan.net/148.208/movie/3e2246f094d7ab7dd57a0188bd025898163008.jpg",
+          "title": "七月与安生",
+          "score": ""
+        },
+        {
+          "imgUrl": "http://p0.meituan.net/148.208/movie/b9b4749fc5ca918cfa39356e6a0f8250739150.png",
+          "title": "黑海夺金",
+          "score": ""
+        },
+        {
+          "imgUrl": "http://p1.meituan.net/148.208/movie/e2456b3c80d67efad7bcc435ca87193f901741.jpg",
+          "title": "寄生兽",
+          "score": "8"
+        },
+        {
+          "imgUrl": "http://p1.meituan.net/148.208/movie/0b3708b5f6c82f2c30fd341723f176ed1413054.jpeg",
+          "title": "谍影重重5",
+          "score": "7.9"
+        },
+        {
+          "imgUrl": "http://p1.meituan.net/148.208/movie/c292dce296fa230364481c0e52ae7e6b2817257.jpg",
+          "title": "我的战争",
+          "score": ""
+        }
+      ]
+    }
+  ]
+}

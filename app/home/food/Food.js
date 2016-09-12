@@ -84,7 +84,9 @@ var Food = React.createClass({
                 <TouchableOpacity
                     activeOpacity={0.5}
                     onPress={()=>this.popFood()}>
-                    <Image source={{uri: 'food_ic_back_u'}} style={{width: 13, height: 13}}/>
+                    <View style={{width: 30}}>
+                        <Image source={{uri:'food_ic_back_u'}} style={{width:15,height:15}}></Image>
+                    </View>
                 </TouchableOpacity>
 
                 <View style={styles.titleCenterViewStyle}>

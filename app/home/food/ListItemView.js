@@ -11,7 +11,7 @@ import {
     Text
 } from 'react-native' ;
 
-
+import StarRating from 'react-native-star-rating';
 export  default  class ListItemView extends React.Component {
     //默认的字段属性值
     static defaultProps = {
@@ -39,6 +39,9 @@ export  default  class ListItemView extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            starCount: 5
+        };
     }
 
 
@@ -49,10 +52,21 @@ export  default  class ListItemView extends React.Component {
                     <Image source={{uri: this.props.itemRenderIcon}} style={{width: 60, height: 60}}></Image>
                     <View style={styles.listItemRightViewStyle}>
                         <Text style={styles.listItemRightTopTitleViewStyle}>{this.props.itemLeftTitle}</Text>
-
+                        {/*<StarRating*/}
+                            {/*disabled={false}*/}
+                            {/*emptyStar={'android-star-outline'}*/}
+                            {/*fullStar={'android-star'}*/}
+                            {/*halfStar={'android-star-half'}*/}
+                            {/*iconSet={'Ionicons'}*/}
+                            {/*maxStars={3}*/}
+                            {/*rating={this.state.starCount}*/}
+                            {/*selectedStar={(rating) => this.onStarRatingPress(rating)}*/}
+                            {/*starColor={'red'}*/}
+                            {/*starSize={18}*/}
+                        {/*/>*/}
 
                         <View style={styles.rightCenBottomViewStyle}>
-                            {/**左边的地址和菜品布局**/}
+                            {/**右边的地址和菜品布局**/}
                             <View style={{flexDirection: 'row', marginTop: 4}}>
                                 <Text style={{fontSize: 13}}>{this.props.itemBelowCentenTitle}</Text>
                                 <Text style={{
@@ -89,8 +103,16 @@ export  default  class ListItemView extends React.Component {
                         </View>
                     </View>
                 </View>
+
+
             </View>
         );
+    }
+
+    onStarRatingPress(rating) {
+        this.setState({
+            starCount: rating
+        });
     }
 }
 
@@ -134,6 +156,7 @@ const styles = StyleSheet.create({
     },
     bottomTextStyle:{
         marginLeft:6
-    }
+    },
+
 });
 
