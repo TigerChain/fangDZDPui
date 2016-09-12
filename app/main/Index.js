@@ -37,17 +37,18 @@ var Index = React.createClass({
                     onPress={() => this.setState({ selectedTab: 'home' })}
                     selectedTitleStyle={styles.tabTitleStyle}
                 >
-                    <Navigator
-                        initialRoute={{name:'home',component:Home}}
-                        configureScene={()=>{
-                            return Navigator.SceneConfigs.PushFromRight;
-                        }}
+                    {/*<Navigator*/}
+                        {/*initialRoute={{name:'home',component:Home}}*/}
+                        {/*configureScene={()=>{*/}
+                            {/*return Navigator.SceneConfigs.PushFromRight;*/}
+                        {/*}}*/}
 
-                        renderScene={(route,navigator)=>{
-                            let Component = route.component;
-                            return <Component {...route.passProps} navigator={navigator} />;
-                        }}
-                    />
+                        {/*renderScene={(route,navigator)=>{*/}
+                            {/*let Component = route.component;*/}
+                            {/*return <Component {...route.passProps} navigator={navigator} />;*/}
+                        {/*}}*/}
+                    {/*/>*/}
+                    <Home navigator={this.props.navigator}/>
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     title="品质优惠"
@@ -57,17 +58,18 @@ var Index = React.createClass({
                     onPress={() => this.setState({ selectedTab: 'pre' })}
                     selectedTitleStyle={styles.tabTitleStyle}
                 >
-                    <Navigator
-                        initialRoute={{name:'pre',component:Preferentail}}
-                        configureScene={()=>{
-                            return Navigator.SceneConfigs.PushFromRight;
-                        }}
+                    {/*<Navigator*/}
+                        {/*initialRoute={{name:'pre',component:Preferentail}}*/}
+                        {/*configureScene={()=>{*/}
+                            {/*return Navigator.SceneConfigs.PushFromRight;*/}
+                        {/*}}*/}
 
-                        renderScene={(route,navigator)=>{
-                            let Component = route.component;
-                            return <Component {...route.passProps} navigator={navigator} />
-                        }}
-                    />
+                        {/*renderScene={(route,navigator)=>{*/}
+                            {/*let Component = route.component;*/}
+                            {/*return <Component {...route.passProps} navigator={navigator} />*/}
+                        {/*}}*/}
+                    {/*/>*/}
+                    <Preferentail navigator={this.props.navigator}/>
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     title="发现"

@@ -42,6 +42,8 @@ var NewPersonItem = require('./NewPersonItem');
 //引入加载条
 import Loading from '../common/Loading' ;
 
+import  Movie from './movie/Movie';
+
 var Home = React.createClass({
 
     getInitialState(){
@@ -158,10 +160,14 @@ var Home = React.createClass({
         switch (text) {
             case '美食':
                 this.props.navigator.push({
-                    component: Food
+                    component: Food,
+                    title:'美食'
                 });
                 break;
-            case 1:
+            case '电影':
+                this.props.navigator.push({
+                    component: Movie
+                });
                 break;
         }
         ToastAndroid.show('你点击了 ' + text + ";第" + (position + 1) + " 张图片", ToastAndroid.SHORT);
