@@ -1,6 +1,6 @@
 /**
  * Created by chenjunjun
- * 加载框
+ * 加载框  转呀转 转呀转
  */
 
 import React, {Component} from 'react';

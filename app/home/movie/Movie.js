@@ -33,6 +33,8 @@ var ToastAndroid = require('ToastAndroid');
 //引入推荐影院列表模拟数据
 var recommendMvData = require('../../data/recommendMvData.json') ;
 
+import QuickLogin from '../../login/QuickLogin';
+
 const BANNER_IMGS = [
     'http://p0.meituan.net/148.208/movie/1ead6be0be6cf122a38bfe18e47acba1221793.jpg',
     'http://p0.meituan.net/148.208/movie/337985da4efdb756f9c8395d02b445f0413246.jpg',
@@ -53,14 +55,12 @@ export default  class Movie extends React.Component {
         // 实际的DataSources存放在state中
         this.state = {
             dataSource: dataSource.cloneWithPages(BANNER_IMGS),
-
             listDataSource:new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),
-
             loaded: false,
         };
     }
 
-
+    //处理耗时操作
     componentDidMount() {
         this.parseData();
     }
@@ -228,7 +228,10 @@ export default  class Movie extends React.Component {
                 <TouchableOpacity
                     activeOpacity={0.5}
                     onPress={()=> {
-                        alert('点击了');
+                        this.props.navigator.push({
+                            //跳转到快速登录界面
+                            component: QuickLogin
+                        }) ;
                     }}>
                     <Image source={{uri: 'takeaway_footbar_personcenter_normal'}} style={{width: 60, height: 60}}/>
                 </TouchableOpacity>
