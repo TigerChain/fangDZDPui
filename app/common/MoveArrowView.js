@@ -56,11 +56,14 @@ export  default class MoveArrowView extends React.Component {
                     </TouchableOpacity>
                 </View>
                 {this.isHideOrShowLine()}
-
             </View>
         );
     }
 
+    /**
+     * 渲染右边的View
+     * @returns {XML}
+     */
     renderRightView(){
         //如果右边有文字则显示,否则只显示 右箭头图片
         if(this.props.rightTitle.length!=0){
@@ -68,7 +71,6 @@ export  default class MoveArrowView extends React.Component {
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                     <Text style={styles.hotViewTopViewText}>{this.props.rightTitle}</Text>
                     <Image source={{uri: 'arrow'}} style={{width: 10, height: 15, marginLeft: 4}}></Image>
-
                 </View>
             ) ;
         }else{
@@ -81,6 +83,10 @@ export  default class MoveArrowView extends React.Component {
 
     }
 
+    /**
+     * 是否显示下划线与否
+     * @returns {XML}
+     */
     isHideOrShowLine(){
         if(!this.props.isHideBtoomLine){
             return(
