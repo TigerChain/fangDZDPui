@@ -44,7 +44,6 @@ export  default  class ListItemView extends React.Component {
         };
     }
 
-
     render() {
         return (
             <View style={styles.listItemViewStyle}>
