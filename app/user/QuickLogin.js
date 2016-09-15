@@ -17,21 +17,21 @@ var Dimensions = require('Dimensions');
 //取得屏幕宽度
 var screenWidth = Dimensions.get('window').width;
 
-var HomeTopItemView = require('../home/HomeTopItemView') ;
+var HomeTopItemView = require('../home/HomeTopItemView');
 
 import dismissKeyboard from 'dismissKeyboard';
 
 var ToastAndroid = require('ToastAndroid');
 
+import DianAccoungLogin from './DianAccoungLogin' ;
+
 export default class QuickLogin extends React.Component {
 
-
-
-    constructor(props){
-        super (props);
-        this.state= {
-            userName:'', //手机号
-            userSmsCode:''//验证码
+    constructor(props) {
+        super(props);
+        this.state = {
+            userName: '', //手机号
+            userSmsCode: ''//验证码
         }
     }
 
@@ -85,7 +85,7 @@ export default class QuickLogin extends React.Component {
 
     //注册方法
     registger() {
-       ToastAndroid.show('注册',ToastAndroid.SHORT) ;
+        ToastAndroid.show('注册', ToastAndroid.SHORT);
     }
 
     /**
@@ -105,11 +105,11 @@ export default class QuickLogin extends React.Component {
                         underlineColorAndroid="transparent"
                         style={styles.phoneInputStyle}
                         placeholder={'手机号'}
-                    onChangeText={(text)=>{
-                        this.state.userName = text;
-                    }}/>
+                        onChangeText={(text)=> {
+                            this.state.userName = text;
+                        }}/>
                     <View style={styles.getSmsCodeViewStyle}>
-                        <Text style={{fontSize:13}}>获取验证码</Text>
+                        <Text style={{fontSize: 13}}>获取验证码</Text>
                     </View>
 
                 </View>
@@ -124,9 +124,9 @@ export default class QuickLogin extends React.Component {
                         underlineColorAndroid="transparent"
                         style={styles.phoneInputStyle}
                         placeholder={'请输入手机难码'}
-                    onChangeText={(text)=>{
-                        this.state.userSmsCode = text;
-                    }}/>
+                        onChangeText={(text)=> {
+                            this.state.userSmsCode = text;
+                        }}/>
                 </View>
             </View>
         );
@@ -139,18 +139,24 @@ export default class QuickLogin extends React.Component {
         return (
             <View style={styles.centerViewStyle}>
                 <TouchableOpacity
-                activeOpacity={0.5}
-                onPress={()=>{
-                    this.getUserInfo()
-                }}>
+                    activeOpacity={0.5}
+                    onPress={()=> {
+                        this.getUserInfo()
+                    }}>
 
-                <View style={styles.loginViewStyle}>
-                    <Text style={{color: 'white', fontSize: 18}}>登录</Text>
-                </View>
-                    </TouchableOpacity>
+                    <View style={styles.loginViewStyle}>
+                        <Text style={{color: 'white', fontSize: 18}}>登录</Text>
+                    </View>
+                </TouchableOpacity>
+               <TouchableOpacity
+               activeOpacity={0.5}
+               onPress={()=>{
+                   this.dianAccountLogin()
+               }}>
                 <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginTop: 13}}>
                     <Text style={{color: 'blue'}}>点评账号和密码登录</Text>
                 </View>
+                   </TouchableOpacity>
             </View>
         );
     }
@@ -158,33 +164,33 @@ export default class QuickLogin extends React.Component {
     /**
      * 渲染第三方登录
      */
-    renderThirdLoginView(){
-        return(
-            <View style={{marginTop:35}}>
+    renderThirdLoginView() {
+        return (
+            <View style={{marginTop: 35}}>
                 <View style={styles.thirdLoginTopViewStyle}>
-                    <View style={{backgroundColor:'gray',height:0.5,flex:1,marginLeft:15}}></View>
-                    <Text style={{margin:3,fontSize:17}}>第三方登录</Text>
-                    <View style={{backgroundColor:'gray',height:0.5,flex:1,marginRight:15}}></View>
+                    <View style={{backgroundColor: 'gray', height: 0.5, flex: 1, marginLeft: 15}}></View>
+                    <Text style={{margin: 3, fontSize: 17}}>第三方登录</Text>
+                    <View style={{backgroundColor: 'gray', height: 0.5, flex: 1, marginRight: 15}}></View>
                 </View>
 
-                <View style={{flexDirection:'row',alignItems:'center',marginTop:15}}>
+                <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 15}}>
                     <HomeTopItemView
-                        style={{flex:1}}
-                        renderIcon={{uri:'main_weixin_btn'}}
+                        style={{flex: 1}}
+                        renderIcon={{uri: 'main_weixin_btn'}}
                         text="微信"
                         position={0}
                         onclick={this.onclick}
                     />
                     <HomeTopItemView
-                        style={{flex:1}}
-                        renderIcon={{uri:'main_qq_btn'}}
+                        style={{flex: 1}}
+                        renderIcon={{uri: 'main_qq_btn'}}
                         text="QQ"
                         position={1}
                         onclick={this.onclick}
                     />
                     <HomeTopItemView
-                        style={{flex:1}}
-                        renderIcon={{uri:'main_more_thirdlogin'}}
+                        style={{flex: 1}}
+                        renderIcon={{uri: 'main_more_thirdlogin'}}
                         text="更多"
                         position={2}
                         onclick={this.onclick}
@@ -195,28 +201,36 @@ export default class QuickLogin extends React.Component {
         )
     }
 
-    onclick(text,position){
-        switch (position){
+    onclick(text, position) {
+        switch (position) {
             case 0:
 
-                break ;
+                break;
             case 1:
 
-                break ;
+                break;
             case 2:
 
-                break ;
+                break;
         }
-        ToastAndroid.show(text,ToastAndroid.SHORT);
+        ToastAndroid.show(text, ToastAndroid.SHORT);
     }
-    getUserInfo(){
-        if(this.state.userName.length===0 || this.state.userSmsCode.length===0){
-            ToastAndroid.show('手机号或验证码不能为空',ToastAndroid.SHORT);
-            return ;
+
+    getUserInfo() {
+        if (this.state.userName.length === 0 || this.state.userSmsCode.length === 0) {
+            ToastAndroid.show('手机号或验证码不能为空', ToastAndroid.SHORT);
+            return;
         }
-        ToastAndroid.show('用户名'+this.state.userName+"::"+this.state.userSmsCode,ToastAndroid.SHORT);
+        ToastAndroid.show('用户名' + this.state.userName + "::" + this.state.userSmsCode, ToastAndroid.SHORT);
         //隐藏软件键盘
         dismissKeyboard();
+    }
+
+    dianAccountLogin(){
+        this.props.navigator.push({
+            component:DianAccoungLogin
+            }
+        )
     }
 }
 
@@ -294,9 +308,9 @@ const styles = StyleSheet.create({
         height: 40
     },
     //三方登录顶部样式
-    thirdLoginTopViewStyle:{
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'center'
+    thirdLoginTopViewStyle: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
