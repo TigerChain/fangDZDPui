@@ -142,7 +142,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'orange',
         borderRadius: 4,
         height: 40,
-
     },
 });
 
