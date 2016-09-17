@@ -33,7 +33,7 @@ var ToastAndroid = require('ToastAndroid');
 //引入推荐影院列表模拟数据
 var recommendMvData = require('../../data/recommendMvData.json') ;
 
-import QuickLogin from '../../login/QuickLogin';
+import QuickLogin from '../../user/QuickLogin';
 
 const BANNER_IMGS = [
     'http://p0.meituan.net/148.208/movie/1ead6be0be6cf122a38bfe18e47acba1221793.jpg',
