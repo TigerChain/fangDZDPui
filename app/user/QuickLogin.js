@@ -31,7 +31,8 @@ export default class QuickLogin extends React.Component {
         super(props);
         this.state = {
             userName: '', //手机号
-            userSmsCode: ''//验证码
+            userSmsCode: '',//验证码
+            moreLogin:false//是否点击更多登录按钮
         }
     }
 
@@ -188,13 +189,9 @@ export default class QuickLogin extends React.Component {
                         position={1}
                         onclick={this.onclick}
                     />
-                    <HomeTopItemView
-                        style={{flex: 1}}
-                        renderIcon={{uri: 'main_more_thirdlogin'}}
-                        text="更多"
-                        position={2}
-                        onclick={this.onclick}
-                    />
+
+                    {this.renderMoreLogin()}
+
                 </View>
 
             </View>
@@ -211,9 +208,43 @@ export default class QuickLogin extends React.Component {
                 break;
             case 2:
 
+
                 break;
         }
         ToastAndroid.show(text, ToastAndroid.SHORT);
+    }
+
+
+
+
+    renderMoreLogin(){
+        if(this.state.moreLogin){
+            return( <View style={{flexDirection:'row', flex:1,alignItems:'center'}}>
+                <HomeTopItemView
+                    style={{flex: 1}}
+                    renderIcon={{uri: 'main_weibo_btn'}}
+                    text="微博"
+                    position={3}
+                    onclick={this.onclick}
+                />
+                <HomeTopItemView
+                    style={{flex: 1}}
+                    renderIcon={{uri: 'main_zhifubao_btn'}}
+                    text="支付宝"
+                    position={4}
+                    onclick={this.onclick}
+                />
+            </View>);
+
+        }else{
+            return <HomeTopItemView
+                style={{flex: 1}}
+                renderIcon={{uri: 'main_more_thirdlogin'}}
+                text="更多"
+                position={2}
+                onclick={this.onclick}
+            />
+        }
     }
 
     getUserInfo() {
