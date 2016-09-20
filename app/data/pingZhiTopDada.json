@@ -1,0 +1,29 @@
+{
+  "data":[
+    {
+      "title":"美食",
+      "icon":"meishi"
+
+    },
+    {
+      "title":"电影",
+      "icon":"dianying"
+
+    },
+    {
+      "title":"外卖",
+      "icon":"waimai"
+
+    },
+    {
+      "title":"丽人",
+      "icon":"liren"
+
+    },
+    {
+      "title":"全部",
+      "icon":"more"
+
+    }
+  ]
+}

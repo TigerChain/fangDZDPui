@@ -14,7 +14,18 @@ import {
     TouchableOpacity
 } from 'react-native' ;
 
+var ToastAndroid = require('ToastAndroid');
+
 export default class DianAccoungLogin extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            account: '',//账号
+            pass: '',//密码
+        }
+    }
+
     render() {
         return (
             <View style={styles.registerViewStyle}>
@@ -33,18 +44,18 @@ export default class DianAccoungLogin extends React.Component {
         return (
             <View style={styles.titleBarViewStyle}>
                 <TouchableOpacity
-                activeOpacity={0.5}
-                onPress={()=>{
-                    this.backOnclick()
-                }}>
-                <View style={{width: 30}}>
-                    <Image source={{uri: 'food_ic_back_u'}} style={{width: 15, height: 15}}/>
-                </View>
-                    </TouchableOpacity>
-                <View style={{alignItems:'center',flex:1,justifyContent:'center'}}>
-                <Text style={styles.titleTextStyle}>点评账号登录</Text>
+                    activeOpacity={0.5}
+                    onPress={()=> {
+                        this.backOnclick()
+                    }}>
+                    <View style={{width: 30}}>
+                        <Image source={{uri: 'food_ic_back_u'}} style={{width: 15, height: 15}}/>
                     </View>
-                <View style={{width:30}}></View>
+                </TouchableOpacity>
+                <View style={{alignItems: 'center', flex: 1, justifyContent: 'center'}}>
+                    <Text style={styles.titleTextStyle}>点评账号登录</Text>
+                </View>
+                <View style={{width: 30}}></View>
             </View>
         );
     }
@@ -52,47 +63,78 @@ export default class DianAccoungLogin extends React.Component {
     /**
      * 返回事件
      */
-    backOnclick(){
-        this.props.navigator.pop() ;
+    backOnclick() {
+        this.props.navigator.pop();
     }
 
-    renderPhoneAndPass(){
-        return(
-            <View style={{backgroundColor:'white',marginTop:20,paddingRight:10,paddingLeft:10}}>
+    renderPhoneAndPass() {
+        return (
+            <View style={{backgroundColor: 'white', marginTop: 20, paddingRight: 10, paddingLeft: 10}}>
                 {/**手机号**/}
                 <View style={styles.userNameStyle}>
                     <Text style={styles.accountAndPassText}>账号</Text>
                     <TextInput
-                        style={{flex:1}}
-                    placeholder={'手机号/邮箱/用户名'}
-                    underlineColorAndroid="transparent"></TextInput>
+                        style={{flex: 1}}
+                        placeholder={'手机号/邮箱/用户名'}
+                        underlineColorAndroid="transparent"
+                        onChangeText={(text)=> {
+                            this.setState({
+                                account: text
+                            });
+                        }}></TextInput>
                 </View>
-                <View style={{backgroundColor:'#dddddd',flex:1,height:0.8}}/>
+                <View style={{backgroundColor: '#dddddd', flex: 1, height: 0.8}}/>
                 {/**密码**/}
                 <View style={styles.userNameStyle}>
                     <Text style={styles.accountAndPassText}>密码</Text>
                     <TextInput
                         placeholder={'请填写密码'}
-                        style={{flex:1}}
-                        underlineColorAndroid="transparent"></TextInput>
+                        style={{flex: 1}}
+                        underlineColorAndroid="transparent"
+                        onChangeText={(text)=> {
+                            this.setState({
+                                pass: text
+                            });
+                        }}></TextInput>
                 </View>
             </View>
-        ) ;
+        );
     }
 
     /**
      * 登录和忘记密码view
      * @returns {XML}
      */
-    renderLoginView(){
-        return(
+    renderLoginView() {
+        return (
             <View style={styles.loginViewStyle}>
-                <View style={styles.loginButtonStyle}>
-                    <Text style={{color: 'white', fontSize: 18}}>登录</Text>
-                </View>
-                <Text style={{color:'blue',fontSize:16,marginTop:12}}>忘记密码?</Text>
+
+                <TouchableOpacity
+                    activeOpacity={0.5}
+                    onPress={()=> {
+                        this.login(this.state.account, this.state.pass)
+                    }}>
+                    <View style={styles.loginButtonStyle}>
+                        <Text style={{color: 'white', fontSize: 18}}>登录</Text>
+                    </View>
+                </TouchableOpacity>
+                <Text style={{color: 'blue', fontSize: 16, marginTop: 12}}>忘记密码?</Text>
             </View>
         )
+    }
+
+    /**
+     * 例如事件
+     * @param userAccount  账号
+     * @param userPass     密码
+     */
+    login(userAccount, userPass) {
+        if (userAccount.length === 0 || userPass.length === 0) {
+            ToastAndroid.show('账号和密码不能为空', ToastAndroid.SHORT);
+            return;
+        }
+
+        ToastAndroid.show('用户名和密码是' + this.state.account + ":" + this.state.pass, ToastAndroid.SHORT);
     }
 }
 
@@ -103,9 +145,9 @@ const styles = StyleSheet.create({
         flex: 1
     },
     //titleBar样式
-    titleBarViewStyle:{
-        flexDirection:'row',
-        alignItems:'center',
+    titleBarViewStyle: {
+        flexDirection: 'row',
+        alignItems: 'center',
         backgroundColor: 'white',
         borderBottomColor: '#dddddd',
         borderBottomWidth: 0.8,
@@ -113,24 +155,24 @@ const styles = StyleSheet.create({
         paddingLeft: 3,
         paddingRight: 3,
     },
-    titleTextStyle:{
-        fontSize:18,
-        color:'black',
+    titleTextStyle: {
+        fontSize: 18,
+        color: 'black',
 
     },
     //账号和密码框样式
-    userNameStyle:{
+    userNameStyle: {
         flexDirection: 'row',
         alignItems: 'center',
         height: 45
     },
     //账号和密码字体样式
-    accountAndPassText:{
-        fontSize:16,
-        color:'black',
-        width:50
+    accountAndPassText: {
+        fontSize: 16,
+        color: 'black',
+        width: 50
     },
-    loginViewStyle:{
+    loginViewStyle: {
         paddingLeft: 15,
         paddingRight: 15,
         marginTop: 15

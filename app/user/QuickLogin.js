@@ -25,6 +25,9 @@ var ToastAndroid = require('ToastAndroid');
 
 import DianAccoungLogin from './DianAccoungLogin' ;
 
+//在点击更多事件中取不到self所以这里 声明一个成员变量 来指向this
+var self;
+
 export default class QuickLogin extends React.Component {
 
     constructor(props) {
@@ -32,8 +35,9 @@ export default class QuickLogin extends React.Component {
         this.state = {
             userName: '', //手机号
             userSmsCode: '',//验证码
-            moreLogin:false//是否点击更多登录按钮
+            moreLogin: false//是否点击更多登录按钮
         }
+        self = this;
     }
 
     render() {
@@ -149,15 +153,15 @@ export default class QuickLogin extends React.Component {
                         <Text style={{color: 'white', fontSize: 18}}>登录</Text>
                     </View>
                 </TouchableOpacity>
-               <TouchableOpacity
-               activeOpacity={0.5}
-               onPress={()=>{
-                   this.dianAccountLogin()
-               }}>
-                <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginTop: 13}}>
-                    <Text style={{color: 'blue'}}>点评账号和密码登录</Text>
-                </View>
-                   </TouchableOpacity>
+                <TouchableOpacity
+                    activeOpacity={0.5}
+                    onPress={()=> {
+                        this.dianAccountLogin()
+                    }}>
+                    <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginTop: 13}}>
+                        <Text style={{color: 'blue'}}>点评账号和密码登录</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -174,6 +178,35 @@ export default class QuickLogin extends React.Component {
                     <View style={{backgroundColor: 'gray', height: 0.5, flex: 1, marginRight: 15}}></View>
                 </View>
 
+                {this.renderThirdLoginButton()}
+            </View>
+        )
+    }
+
+    onclick(text, position) {
+
+        switch (position) {
+            case 0:
+
+                break;
+            case 1:
+
+                break;
+            case 2:
+                //修改状态,重新渲染
+                self.setState({
+                    moreLogin: true
+                });
+
+                break;
+        }
+        ToastAndroid.show(text, ToastAndroid.SHORT);
+    }
+
+
+    renderThirdLoginButton() {
+        if (this.state.moreLogin) {
+            return (
                 <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 15}}>
                     <HomeTopItemView
                         style={{flex: 1}}
@@ -190,60 +223,54 @@ export default class QuickLogin extends React.Component {
                         onclick={this.onclick}
                     />
 
-                    {this.renderMoreLogin()}
+                    <HomeTopItemView
+                        style={{flex: 1}}
+                        renderIcon={{uri: 'main_weibo_btn'}}
+                        text="微博"
+                        position={3}
+                        onclick={this.onclick}
+                    />
+                    <HomeTopItemView
+                        style={{flex: 1}}
+                        renderIcon={{uri: 'main_zhifubao_btn'}}
+                        text="支付宝"
+                        position={4}
+                        onclick={this.onclick}
+                    />
 
                 </View>
+            )
 
-            </View>
-        )
-    }
+        } else {
+            return (
+                <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 15}}>
+                    <HomeTopItemView
+                        style={{flex: 1}}
+                        renderIcon={{uri: 'main_weixin_btn'}}
+                        text="微信"
+                        position={0}
+                        onclick={this.onclick}
+                    />
+                    <HomeTopItemView
+                        style={{flex: 1}}
+                        renderIcon={{uri: 'main_qq_btn'}}
+                        text="QQ"
+                        position={1}
+                        onclick={this.onclick}
+                    />
 
-    onclick(text, position) {
-        switch (position) {
-            case 0:
+                    <HomeTopItemView
+                        style={{flex: 1}}
+                        renderIcon={{uri: 'main_more_thirdlogin'}}
+                        text="更多"
+                        position={2}
+                        onclick={this.onclick}
+                    />
 
-                break;
-            case 1:
-
-                break;
-            case 2:
-
-
-                break;
-        }
-        ToastAndroid.show(text, ToastAndroid.SHORT);
-    }
+                </View>
+            )
 
 
-
-
-    renderMoreLogin(){
-        if(this.state.moreLogin){
-            return( <View style={{flexDirection:'row', flex:1,alignItems:'center'}}>
-                <HomeTopItemView
-                    style={{flex: 1}}
-                    renderIcon={{uri: 'main_weibo_btn'}}
-                    text="微博"
-                    position={3}
-                    onclick={this.onclick}
-                />
-                <HomeTopItemView
-                    style={{flex: 1}}
-                    renderIcon={{uri: 'main_zhifubao_btn'}}
-                    text="支付宝"
-                    position={4}
-                    onclick={this.onclick}
-                />
-            </View>);
-
-        }else{
-            return <HomeTopItemView
-                style={{flex: 1}}
-                renderIcon={{uri: 'main_more_thirdlogin'}}
-                text="更多"
-                position={2}
-                onclick={this.onclick}
-            />
         }
     }
 
@@ -257,9 +284,9 @@ export default class QuickLogin extends React.Component {
         dismissKeyboard();
     }
 
-    dianAccountLogin(){
+    dianAccountLogin() {
         this.props.navigator.push({
-            component:DianAccoungLogin
+                component: DianAccoungLogin
             }
         )
     }
