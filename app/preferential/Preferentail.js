@@ -19,11 +19,17 @@ var HomeTopItemView = require('../home/HomeTopItemView')
 //导入品质的模拟数据
 var pingZhiTopDada = require('../data/pingZhiTopDada.json');
 
+//引入向右箭头和文本组件
 import TextAndArrowRightView from '../common/TextAndArrowRightView' ;
 
+//引入顶部的FOOD 美味样式的图片组件
 import TopViewAndText from './TopViewAndText' ;
 
+//引入美味图片的组件
 import DeliciousImgView from './DeliciousImgView' ;
+
+//导入品质优惠条目组件
+import PreferentailListItem from './PreferentailListItem';
 
 var Preferentail = React.createClass({
 
@@ -33,87 +39,17 @@ var Preferentail = React.createClass({
                 {/**渲染标题栏**/}
                 {this.renderTitleBar()}
                 <ScrollView>
-                    <View style={styles.pingZhiTopViewStyle}>
-                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                            {this.renderHotPreferentail()}
-                        </View>
-                        <View
-                            style={{flex: 1, height: 0.8, backgroundColor: '#dddddd', marginTop: 8, marginBottom: 8}}/>
-
-                        <View style={styles.hotYouhuiViewStyle}>
-                            <Text style={{fontSize: 14, fontWeight: 'bold', color: 'black'}}>热门优惠</Text>
-                            <View style={{
-                                marginLeft: 15,
-                                marginRight: 15,
-                                height: 15,
-                                width: 0.8,
-                                backgroundColor: '#dddddd'
-                            }}/>
-                            <View style={{
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                                flex: 1,
-                                justifyContent: 'space-between'
-                            }}>
-                                <Text style={{color: 'orange', fontWeight: 'bold'}}>双从电影院,自且餐不用愁</Text>
-                                <Text style={{color: 'black'}}>►</Text>
-                            </View>
-                        </View>
-                    </View>
+                    {this.renderTopView()}
                     <View style={styles.deliciousAllStyle}>
-
-                        <View style={styles.deliciousViewStyle}>
-                            <View style={{alignSelf: 'flex-start', marginTop: 5}}>
-                                <TopViewAndText
-                                    category="FOOD"
-                                    title="美味"
-                                    style={{color: 'orange', fontSize: 16, fontWeight: 'bold'}}
-                                />
-                            </View>
-
-
-                            <DeliciousImgView
-                                imgUrl="http://p1.meituan.net/deal/084b8ae1d14a5f94f16e38816cd0f70b160495.jpg"
-                                floatText="特惠"
-                                bottomText="自助餐"
-                                personCount="3.4万人气"
-                                style={{
-                                    fontSize: 14,
-                                    color: 'black',
-                                    fontWeight: 'bold'
-                                }}
-                            />
-
-                            <DeliciousImgView
-                                imgUrl="http://p0.meituan.net/deal/cd43b58a7f68508f3b4826e7ed4edf8148775.jpg"
-                                floatText="订座"
-                                bottomText="自助餐"
-                                personCount="3.4万人气"
-                                style={{
-                                    fontSize: 14,
-                                    color: 'black',
-                                    fontWeight: 'bold'
-                                }}
-                            />
-                            <DeliciousImgView
-                                imgUrl="http://i1.s2.dpfile.com/pc/0bc7cd35c002881e31bca96e8780ff37(700x700)/thumb.jpg"
-                                floatText="霸王餐"
-                                bottomText="自助餐"
-                                personCount="3.4万人气"
-                                style={{
-                                    fontSize: 11,
-                                    color: 'black',
-                                    fontWeight: 'bold'
-                                }}
-                            />
-
-
-                        </View>
+                        {/**渲染美味顶部View**/}
+                        {this.renderDeliciousTopView()}
                         <View style={{flexDirection: 'row', justifyContent: 'flex-end', flex: 1, marginTop: 10}}>
                             <TextAndArrowRightView
                                 title="全部17个美味专题"
                             />
                         </View>
+                        {/**渲染美味底部View**/}
+                        {this.renderDeliciousBottomView()}
                     </View>
                 </ScrollView>
             </View>
@@ -146,6 +82,40 @@ var Preferentail = React.createClass({
         alert('点击搜索');
     },
     /**
+     * 渲染顶部View
+     * @returns {XML}
+     */
+    renderTopView(){
+        return (
+            <View style={styles.pingZhiTopViewStyle}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    {this.renderHotPreferentail()}
+                </View>
+                <View
+                    style={{flex: 1, height: 0.8, backgroundColor: '#dddddd', marginTop: 8, marginBottom: 8}}/>
+
+                <View style={styles.hotYouhuiViewStyle}>
+                    <Text style={{fontSize: 14, fontWeight: 'bold', color: 'black'}}>热门优惠</Text>
+                    <View style={{
+                        marginLeft: 15,
+                        marginRight: 15,
+                        height: 15,
+                        width: 0.8,
+                        backgroundColor: '#dddddd'
+                    }}/>
+                    <View style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        flex: 1,
+                        justifyContent: 'space-between'
+                    }}>
+                        <Text style={{color: 'orange', fontWeight: 'bold'}}>双从电影院,自且餐不用愁</Text>
+                        <Text style={{color: 'black'}}>►</Text>
+                    </View>
+                </View>
+            </View>);
+    },
+    /**
      * 渲染热门优惠布局
      */
     renderHotPreferentail(){
@@ -167,6 +137,83 @@ var Preferentail = React.createClass({
             )
         }
         return pingZhiView;
+    },
+    /**
+     * 渲染美味顶部View
+     * @returns {XML}
+     */
+    renderDeliciousTopView(){
+        return(
+        <View style={styles.deliciousViewStyle}>
+            <View style={{alignSelf: 'flex-start', marginTop: 5}}>
+                <TopViewAndText
+                    category="FOOD"
+                    title="美味"
+                    style={{color: 'orange', fontSize: 16, fontWeight: 'bold'}}
+                />
+            </View>
+
+            <DeliciousImgView
+                imgUrl="http://p1.meituan.net/deal/084b8ae1d14a5f94f16e38816cd0f70b160495.jpg"
+                floatText="特惠"
+                bottomText="自助餐"
+                personCount="3.4万人气"
+                style={{
+                    fontSize: 14,
+                    color: 'black',
+                    fontWeight: 'bold'
+                }}
+            />
+
+            <DeliciousImgView
+                imgUrl="http://p0.meituan.net/deal/cd43b58a7f68508f3b4826e7ed4edf8148775.jpg"
+                floatText="订座"
+                bottomText="自助餐"
+                personCount="3.4万人气"
+                style={{
+                    fontSize: 14,
+                    color: 'black',
+                    fontWeight: 'bold'
+                }}
+            />
+            <DeliciousImgView
+                imgUrl="http://i1.s2.dpfile.com/pc/0bc7cd35c002881e31bca96e8780ff37(700x700)/thumb.jpg"
+                floatText="霸王餐"
+                bottomText="自助餐"
+                personCount="3.4万人气"
+                style={{
+                    fontSize: 11,
+                    color: 'black',
+                    fontWeight: 'bold'
+                }}
+            />
+        </View>
+
+        )
+    },
+    /**
+     * 渲染美味底部View
+     */
+    renderDeliciousBottomView(){
+        return(
+            <View style={{marginLeft:42,marginTop:10}}>
+                <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
+                    <Text>优质美食 品味生活</Text>
+                    <Text>////////////////////////////</Text>
+                </View>
+                <PreferentailListItem/>
+
+                <PreferentailListItem/>
+
+                <View style={{height:0.8,backgroundColor:'#dddddd',marginTop:7}}></View>
+                <View style={{flexDirection: 'row', justifyContent: 'flex-end', flex: 1, marginTop: 10}}>
+                    <TextAndArrowRightView
+                        title="查看更多"
+                    />
+                </View>
+
+            </View>
+        ) ;
     }
 });
 

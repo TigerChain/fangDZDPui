@@ -14,12 +14,14 @@ import {
 
 export default class DeliciousImgView extends React.Component {
 
+    //默认属性
     static defaultProps = {
         imgUrl: '', //图片的地址
         floatText: '',//顶部悬浮是折扣还是啥的字样
         bottomText: '', //底部介绍 文本,
         personCount: '',//人气数
-        style:Text.prototype.style
+        style:Text.prototype.style,//悬浮View上面字的样式
+        tofloatViewBgColor:'yellow' //悬浮View背景色默认是黄色
     }
 
     render() {
@@ -31,7 +33,7 @@ export default class DeliciousImgView extends React.Component {
                         <Text style={{color: 'white'}}>{this.props.bottomText}</Text>
                     </View>
                 </View>
-                <View style={styles.topFloatViewStyle}>
+                <View style={[styles.topFloatViewStyle,{backgroundColor:this.props.tofloatViewBgColor}]}>
                     <Text style={styles.topFloatTextStyle}>coupon</Text>
                     <Text style={this.props.style}>{this.props.floatText}</Text>
                 </View>
@@ -64,9 +66,8 @@ const styles = StyleSheet.create({
     },
     //顶部悬浮view
     topFloatViewStyle: {
-        backgroundColor: 'yellow',
-        width: 45,
-        height:40,
+        width: 60,
+        height:50,
         position: 'absolute',
         alignItems: 'center',
         marginLeft: 5,
