@@ -24,8 +24,8 @@ export default class TopViewAndText extends React.Component{
 
     render(){
         return(
-            <View style={{alignItems:'center'}}>
-                <Text style={{fontSize:15,fontWeight:'bold'}}>{this.props.category}</Text>
+            <View style={{alignItems:'center',width:42}}>
+                <Text style={{fontSize:13,fontWeight:'bold'}}>{this.props.category}</Text>
                 <Text style={this.props.style}>{this.props.title}</Text>
             </View>
         ) ;

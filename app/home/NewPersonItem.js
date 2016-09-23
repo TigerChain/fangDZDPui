@@ -13,6 +13,7 @@ import {
 } from 'react-native' ;
 
 var NewPersonItem = React.createClass({
+    //传入属性的规范
     propTypes: {
         renderTitle: React.PropTypes.string,//标题
         renderCenterText: React.PropTypes.string, //中间的标题
@@ -50,14 +51,12 @@ var NewPersonItem = React.createClass({
      * 渲染中间的View
      */
     renderCenterView: function () {
-
         return (
             <View style={styles.centerViewStyle}>
                 <Text style={styles.itemTextViewStyle}>{this.props.renderCenterText}</Text>
             </View>
         )
     }
-
 });
 
 
@@ -70,7 +69,6 @@ const styles = StyleSheet.create({
         padding: 10,
         flex: 1,
         margin: 3
-
     },
     //中间View的样式
     centerViewStyle: {
@@ -90,7 +88,6 @@ const styles = StyleSheet.create({
         fontSize: 10,
         flex: 1,
         justifyContent: 'center'
-
     },
     //底剖图片的样式
     itemBottomImgStyle: {
@@ -99,6 +96,5 @@ const styles = StyleSheet.create({
         marginTop: 7
     }
 });
-
 
 module.exports = NewPersonItem

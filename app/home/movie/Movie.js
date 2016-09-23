@@ -51,7 +51,6 @@ export default  class Movie extends React.Component {
         var dataSource = new ViewPager.DataSource({
             pageHasChanged: (p1, p2) => p1 !== p2,
         });
-        const ds =
         // 实际的DataSources存放在state中
         this.state = {
             dataSource: dataSource.cloneWithPages(BANNER_IMGS),

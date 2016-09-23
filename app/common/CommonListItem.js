@@ -52,7 +52,6 @@ var CommonListItem = React.createClass({
             <View style={styles.itemLeftViewStyle}>
                 {this.renderLeftIconSise()}
                 <Text style={{marginLeft:5,color:'black',fontSize:16}}>{this.props.itemLeftTitle}</Text>
-
             </View>
         );
     },
@@ -81,20 +80,14 @@ var CommonListItem = React.createClass({
 });
 
 const  styles = StyleSheet.create({
-    //条目根布局
-    // rootItemViewStyle:{
-    //     flexDirection:'row',
-    //     justifyContent:'space-between',
-    //     backgroundColor:'white',
-    //     height:40,
-    //     borderBottomColor:'#eeeeee',
-    //     borderBottomWidth:0.7
-    // },
+
+    //条目右边的View样式
     itemRightViewStyle:{
         flexDirection:'row',
         alignItems:'center',
         marginRight:8
     },
+    //条目有左边的View样式
     itemLeftViewStyle:{
         flexDirection:'row',
         alignItems:'center',

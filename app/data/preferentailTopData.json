@@ -1,0 +1,166 @@
+{
+  "data": [
+    {
+      "cagegory": "FOOD",
+      "titleColor": "orange",
+      "title": "美味",
+      "topImgsInfo": [
+        {
+          "topImgUrl": "http://p1.meituan.net/deal/084b8ae1d14a5f94f16e38816cd0f70b160495.jpg",
+          "floatViewColor": "yellow",
+          "floatViewText": "大促",
+          "bottomText": "测吃货报告",
+          "personCount": "3.0万人气"
+        },
+        {
+          "topImgUrl": "http://qcloud.dpfile.com/pc/9o7qYwiVwYk9ZwBJ06QDSOXTRORn-7804_QomUtDrN9zPA0vGs8aJLVNzap7d9f2CjM_FsO3sW809PHY7spB8g.jpg",
+          "floatViewColor": "yellow",
+          "floatViewText": "订座",
+          "bottomText": "顶级日料",
+          "personCount": "2.9万人气"
+        },
+        {
+          "topImgUrl": "http://i2.s2.dpfile.com/pc/7919ec95605bd4cfcb9316042ccadb30(700x700)/thumb.jpg",
+          "floatViewColor": "yellow",
+          "floatViewText": "霸王餐",
+          "bottomText": "潮品美食",
+          "personCount": "6.4万人气"
+        }
+      ],
+      "topMore": "全部18个美味专题",
+      "fenggeText": "优质美食 品味生活",
+      "fenggeCode": "////////////////////////////",
+      "listImtes": [
+        {
+          "itemImgUrl": "http://i1.s2.dpfile.com/pc/e1508111d8bfa1fc37902bf0f365de24(700x700)/thumb.jpg",
+          "itemName": "吉朗丽大酒店",
+          "itemKm": "483m",
+          "itemAddress": "[唐延路沿线]午市自助餐",
+          "itemZheHouPrice": "￥128",
+          "itemZheKou": "6.8折",
+          "itemYuanPrice": "￥188",
+          "itemHaoPingPersent": "%98"
+        },
+        {
+          "itemImgUrl": "http://qcloud.dpfile.com/pc/8qDF9EnZ_wROyQXJq4zOcMmDpBsZCC4FWtc60SsJQCZA0m3ku4_5aY0SC4EwKup6TYGVDmosZWTLal1WbWRW3A.jpg",
+          "itemName": "悦派九宫格老火锅",
+          "itemKm": "8.6km",
+          "itemAddress": "[大雁塔]100元代金卷1张,除酒水、锅底、料碗外全场通用,可免费使用包间,提供免费WiFi",
+          "itemZheHouPrice": "￥49.9",
+          "itemZheKou": "5折",
+          "itemYuanPrice": "￥100",
+          "itemHaoPingPersent": "%89"
+        }
+      ],
+      "bottomMore": "查看更多"
+    },
+    {
+      "cagegory": "FELA",
+      "titleColor": "purple",
+      "title": "玩乐",
+      "topImgsInfo": [
+        {
+          "topImgUrl": "http://p1.meituan.net/deal/084b8ae1d14a5f94f16e38816cd0f70b160495.jpg",
+          "floatViewColor": "purple",
+          "floatViewText": "-10元",
+          "bottomText": "玩转开学季之攻略",
+          "personCount": "2.3万人气"
+        },
+        {
+          "topImgUrl": "http://p1.meituan.net/148.208/movie/9e3533ca6d216db222f5c668f34549fd281300.jpg",
+          "floatViewColor": "purple",
+          "floatViewText": "口碑",
+          "bottomText": "反贪风暴2",
+          "personCount": "2.3万人气"
+        },
+        {
+          "topImgUrl": "http://p1.meituan.net/deal/084b8ae1d14a5f94f16e38816cd0f70b160495.jpg",
+          "floatViewColor": "purple",
+          "floatViewText": "3折",
+          "bottomText": "蜜月选岛指南",
+          "personCount": "2.3万人气"
+        }
+      ],
+      "topMore": "全部13个玩乐专题",
+      "fenggeText": "品质玩乐 乐享特惠",
+      "fenggeCode": "////////////////////////////",
+      "listImtes": [
+        {
+          "itemImgUrl": "http://p1.meituan.net/148.208/movie/3e2246f094d7ab7dd57a0188bd025898163008.jpg",
+          "itemName": "七月与安生",
+          "itemKm": "8.7分",
+          "itemAddress": "6172人想看",
+          "itemZheHouPrice": "￥",
+          "itemZheKou": "1折",
+          "itemYuanPrice": "最底￥18.0",
+          "itemHaoPingPersent": ""
+        },
+        {
+          "itemImgUrl": "http://qcloud.dpfile.com/pc/MQxgrnqpvJFJvNiVXpNtduHwbOw-xbHBL3whEnracQ5rPL75TC_Uon6JebO2efRtTYGVDmosZWTLal1WbWRW3A.jpg",
+          "itemName": "香汤镇休闲会所",
+          "itemKm": "4.7km",
+          "itemAddress": "[小寨]温泉单人洗浴,免预约",
+          "itemZheHouPrice": "￥48",
+          "itemZheKou": "6.2折",
+          "itemYuanPrice": "￥178",
+          "itemHaoPingPersent": "%93"
+        }
+      ],
+      "bottomMore": "查看更多"
+    },
+    {
+      "cagegory": "BEAU",
+      "titleColor": "#FF44AA",
+      "title": "优美",
+      "topImgsInfo": [
+        {
+          "topImgUrl": "http://p0.meituan.net/dpdeal/dc7c4edf8c0dc5b4a79f24178b69481d43059.jpg",
+          "floatViewColor": "#FF44AA",
+          "floatViewText": "传栏",
+          "bottomText": "不美不要钱",
+          "personCount": "1.8万人气"
+        },
+        {
+          "topImgUrl": "http://qcloud.dpfile.com/pc/HaSYFAfA4OuBBCr9yrpll_GJ8Lb0CkjoJQNeR_iOlWyRt2ywKl9zrZgEwd3YLHTYTYGVDmosZWTLal1WbWRW3A.jpg",
+          "floatViewColor": "#FF44AA",
+          "floatViewText": "特惠",
+          "bottomText": "舞出我人生",
+          "personCount": "1.8万人气"
+        },
+        {
+          "topImgUrl": "http://qcloud.dpfile.com/pc/UKMSl0VQINW87b8kzuVT0KhSiw9CRh8cHcs_4A3UoWu7c_sDj_VL_G_sMtgg1nN6TYGVDmosZWTLal1WbWRW3A.jpg",
+          "floatViewColor": "#FF44AA",
+          "floatViewText": "精选",
+          "bottomText": "美从内到外",
+          "personCount": "1.8万人气"
+        }
+      ],
+      "topMore": "全部16个优美专题",
+      "fenggeText": "美美定制 为你甄选",
+      "fenggeCode": "////////////////////////////",
+      "listImtes": [
+        {
+          "itemImgUrl": "http://qcloud.dpfile.com/pc/SacDtuR1-tl5BmGTGwJK6yk6gBCM7L1uxc_9CpC1V2uvsXpeI3ZZNoWkEjEeuRhzTYGVDmosZWTLal1WbWRW3A.jpg",
+          "itemName": "千禧鸟国际瘦身",
+          "itemKm": "483m",
+          "itemAddress": "[17店通用]全身养瘦10斤套餐",
+          "itemZheHouPrice": "￥288",
+          "itemZheKou": "1折",
+          "itemYuanPrice": "￥288",
+          "itemHaoPingPersent": "%97"
+        },
+        {
+          "itemImgUrl": "http://qcloud.dpfile.com/pc/plrktFmjZAPozATCRgwglSIiCk-HEokKXlgaAq1II4sh3ADqnnDmTl4ClHrYoS_QTYGVDmosZWTLal1WbWRW3A.jpg",
+          "itemName": "rosy hair salon",
+          "itemKm": "1.3km",
+          "itemAddress": "[高新路沿线]单人高级发型题设计",
+          "itemZheHouPrice": "￥88",
+          "itemZheKou": "4.9折",
+          "itemYuanPrice": "￥180",
+          "itemHaoPingPersent": "%100"
+        }
+      ],
+      "bottomMore": "查看更多"
+    }
+  ]
+}

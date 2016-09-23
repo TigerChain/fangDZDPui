@@ -21,7 +21,7 @@ var HomeTopItemView = React.createClass({
         onclick: React.PropTypes.func  // 回调函数
     },
     onclick:function () {
-        if(this.props.onclick){
+        if(this.props.onclick){//如果设置点击,则回调
             this.props.onclick(this.props.text, this.props.position);
         }
     },
@@ -42,10 +42,12 @@ const styles = StyleSheet.create({
         flex:1,
         alignItems:'center'
     },
+    //图片的大小
     icon: {
         width: 40,
         height: 40,
     },
+    //字体样式
     text: {
         fontSize: 12,
         color:'black',
