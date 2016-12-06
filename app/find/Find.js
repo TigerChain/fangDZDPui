@@ -26,7 +26,7 @@ class Find extends React.Component{
     return(
         <ScrollView>
       <View style={styles.container}>
-          {this.renderTitleBar()}
+          {this._renderTitleBar()}
           <FindArrowView
             leftTitle={'好友去哪'}
             rightTitle={'去绑定送红包'}
@@ -44,7 +44,7 @@ class Find extends React.Component{
   /**
    * 渲染头部组件
    */
-  renderTitleBar(){
+  _renderTitleBar(){
       return (
           <View style={styles.titleBarViewStyle}>
               <Text style={styles.titleLeftTitleStyle}>西安</Text>
@@ -81,6 +81,7 @@ class Find extends React.Component{
       case 1:
 
       break;
+
       case 2:
 
       break ;
