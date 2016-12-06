@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 var CommonListItem = React.createClass({
-
+    
     getDefaultProps(){
         return{
             //左边按钮
@@ -47,6 +47,10 @@ var CommonListItem = React.createClass({
             </View>
         );
     },
+    /**
+     * 渲染左边的View
+     * @returns {XML}
+     */
     renderLeftView:function () {
         return(
             <View style={styles.itemLeftViewStyle}>
@@ -55,6 +59,10 @@ var CommonListItem = React.createClass({
             </View>
         );
     },
+    /**
+     * 渲染左边图片的方法
+     * @returns {XML}
+     */
     renderLeftIconSise:function () {
         //如果设置了图片的大小 就按设置的走,否则就是默认的大小
         if(this.props.itemLeftIconStyle.length!=0){
@@ -63,6 +71,10 @@ var CommonListItem = React.createClass({
            return(<Image source={{uri:this.props.itemLeftIcon}} style={{width:20,height:20}}/>);
         }
     } ,
+    /**
+     * 渲染右边的View
+     * @returns {XML}
+     */
     renderRightView:function () {
         return(
             <View style={styles.itemRightViewStyle}>
@@ -71,6 +83,10 @@ var CommonListItem = React.createClass({
             </View>
         );
     },
+    /**
+     * 渲染右边标题View
+     * @returns {XML}
+     */
     isRenderRightTitle:function () {
         //如果右边有文字则 渲染
         if(this.props.itemRightTitle.length!=0){
@@ -94,6 +110,5 @@ const  styles = StyleSheet.create({
         marginLeft:8
     }
 });
-
 
 module.exports = CommonListItem

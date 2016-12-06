@@ -80,7 +80,6 @@ export  default class MoveArrowView extends React.Component {
                 </View>
             ) ;
         }
-
     }
 
     /**

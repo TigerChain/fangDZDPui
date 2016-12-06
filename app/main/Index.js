@@ -16,7 +16,7 @@ import TabNavigator from 'react-native-tab-navigator';
 
 var Home = require('../home/Home');
 var Preferentail = require('../preferential/Preferentail');
-var Find = require('../find/Find');
+import Find from '../find/Find';
 var Mine = require('../mine/Mine');
 
 var Index = React.createClass({
