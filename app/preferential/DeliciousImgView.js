@@ -28,9 +28,9 @@ export default class DeliciousImgView extends React.Component {
         return (
             <View style={styles.rootViewStyle}>
                 <View style={styles.containerImageViewStyle}>
-                    <Image source={{uri: this.props.imgUrl}} style={{flex: 1}}/>
+                    <Image source={{uri: this.props.imgUrl}} style={{flex: 1,resizeMode: Image.resizeMode.cover}}/>
                     <View style={styles.containerTextViewStyle}>
-                        <Text style={{color: 'white'}}>{this.props.bottomText}</Text>
+                        <Text style={{color: 'white'}} numberOfLines={1}>{this.props.bottomText}</Text>
                     </View>
                 </View>
                 <View style={[styles.topFloatViewStyle,{backgroundColor:this.props.tofloatViewBgColor}]}>

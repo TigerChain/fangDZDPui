@@ -10,7 +10,8 @@ import {
     Text,
     Image,
     TouchableOpacity,
-    ScrollView
+    ScrollView,
+    ListView
 } from 'react-native'
 
 
@@ -31,28 +32,81 @@ import DeliciousImgView from './DeliciousImgView' ;
 //导入品质优惠条目组件
 import PreferentailListItem from './PreferentailListItem';
 
+//引入品质优惠模拟数据
+var preferentailTopData = require('../data/preferentailTopData.json');
+
 var Preferentail = React.createClass({
 
+    getInitialState(){
+        var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        return {
+            topData: [],
+            listDataSource: ds
+        }
+    },
+
+    //处理耗时操作
+    componentDidMount() {
+        //这里应该是请求服务器,我在这里模拟一下请求数据  改变状态
+        this.setState({
+            topData: preferentailTopData.data
+        });
+
+        this.getListData();
+    },
+    getData: function () {
+        var dataBlob = [];
+        for (let i = 0; i < 20; i++) {
+            dataBlob.push("haha" + i);
+        }
+        return dataBlob;
+    },
+    getListData(){
+        var listDatas = [];
+        this.setState({
+            listDataSource: this.state.listDataSource.cloneWithRows(this.getData())
+        });
+    },
     render(){
         return (
             <View style={styles.container}>
                 {/**渲染标题栏**/}
                 {this.renderTitleBar()}
                 <ScrollView>
+                    {/**渲染顶部View*/}
                     {this.renderTopView()}
-                    <View style={styles.deliciousAllStyle}>
-                        {/**渲染美味顶部View**/}
-                        {this.renderDeliciousTopView()}
-                        <View style={{flexDirection: 'row', justifyContent: 'flex-end', flex: 1, marginTop: 10}}>
-                            <TextAndArrowRightView
-                                title="全部17个美味专题"
-                            />
-                        </View>
-                        {/**渲染美味底部View**/}
-                        {this.renderDeliciousBottomView()}
-                    </View>
+                    {/**渲染顶部三张图片和两个列表的三个View**/}
+                    {this.renderTopImgsInfoView()}
+
+                    <Text style={{marginLeft: 10, fontSize: 16, marginTop: 5, marginBottom: 5}}>优惠精选</Text>
+                    {/**底部的List条目**/}
+                    <ListView
+                        style={{backgroundColor: 'white', padding: 10}}
+                        dataSource={this.state.listDataSource}
+                        renderRow={this.renderRow}
+                    />
+
                 </ScrollView>
             </View>
+        );
+    },
+    renderRow(rowData, sectionID, rowID, highlightRow){
+        return (
+            <TouchableOpacity
+                activeOpacity={0.5}
+                onPress={()=> {
+                    ToastAndroid.show('你点击了 ' + rowID, ToastAndroid.SHORT)
+                }}>
+                <PreferentailListItem
+                    itemImgUrl={"http://i1.s2.dpfile.com/pc/e1508111d8bfa1fc37902bf0f365de24(700x700)/thumb.jpg"}
+                    itemName={"吉朗丽大酒店"}
+                    itemKm={"483m"}
+                    itemAddress={"[唐延路沿线]午市自助餐"}
+                    itemZheHouPrice={"￥128"}
+                    itemZheKou={"6.8折"}
+                    itemYuanPrice={"￥188"}
+                    itemHaoPingPersent={"%98"}/>
+            </TouchableOpacity>
         );
     },
     /**
@@ -80,6 +134,43 @@ var Preferentail = React.createClass({
     },
     searchClick(){
         alert('点击搜索');
+    },
+    /**
+     * 渲染顶部包括图片的View
+     * @returns {XML}
+     */
+    renderTopImgsInfoView(){
+        var datas = this.state.topData;
+        if (datas != 0) {
+            return (
+                <View>
+                    {this.renderItemImgsInfoView(datas)}
+                </View>
+            );
+        } else {
+            //应该是显示 loading
+        }
+    },
+    /**
+     * 渲染每一个图片信息View
+     */
+    renderItemImgsInfoView(datas){
+        var itemImgsInfoView = [];
+        for (var i = 0; i < datas.length; i++) {
+            itemImgsInfoView.push(
+                <View style={styles.deliciousAllStyle} key={i}>
+                    {/**渲染美味顶部View**/}
+                    {this.renderDeliciousTopView(datas[i])}
+                    <View style={{flexDirection: 'row', justifyContent: 'flex-end', flex: 1, marginTop: 10}}>
+                        <TextAndArrowRightView
+                            title={datas[i].topMore}/>
+                    </View>
+                    {/**渲染美味底部View**/}
+                    {this.renderDeliciousBottomView(datas[i])}
+                </View>
+            )
+        }
+        return itemImgsInfoView
     },
     /**
      * 渲染顶部View
@@ -131,8 +222,7 @@ var Preferentail = React.createClass({
                         renderIcon={{uri: icon}}
                         text={title}
                         position={i}
-                        onclick={this.omItemClick}
-                    />
+                        onclick={this.omItemClick}/>
                 </View>
             )
         }
@@ -142,78 +232,91 @@ var Preferentail = React.createClass({
      * 渲染美味顶部View
      * @returns {XML}
      */
-    renderDeliciousTopView(){
-        return(
-        <View style={styles.deliciousViewStyle}>
-            <View style={{alignSelf: 'flex-start', marginTop: 5}}>
-                <TopViewAndText
-                    category="FOOD"
-                    title="美味"
-                    style={{color: 'orange', fontSize: 16, fontWeight: 'bold'}}
-                />
+    renderDeliciousTopView(topDataItem){
+        return (
+            <View style={styles.deliciousViewStyle}>
+                <View style={{alignSelf: 'flex-start', marginTop: 5}}>
+                    <TopViewAndText
+                        category={topDataItem.cagegory}
+                        title={topDataItem.title}
+                        style={{color: topDataItem.titleColor, fontSize: 15, fontWeight: 'bold'}}
+                    />
+                </View>
+                {/***渲染三张图片*/}
+                {this.renderDeliciousImgView(topDataItem.topImgsInfo)}
             </View>
-
-            <DeliciousImgView
-                imgUrl="http://p1.meituan.net/deal/084b8ae1d14a5f94f16e38816cd0f70b160495.jpg"
-                floatText="特惠"
-                bottomText="自助餐"
-                personCount="3.4万人气"
-                style={{
-                    fontSize: 14,
-                    color: 'black',
-                    fontWeight: 'bold'
-                }}
-            />
-
-            <DeliciousImgView
-                imgUrl="http://p0.meituan.net/deal/cd43b58a7f68508f3b4826e7ed4edf8148775.jpg"
-                floatText="订座"
-                bottomText="自助餐"
-                personCount="3.4万人气"
-                style={{
-                    fontSize: 14,
-                    color: 'black',
-                    fontWeight: 'bold'
-                }}
-            />
-            <DeliciousImgView
-                imgUrl="http://i1.s2.dpfile.com/pc/0bc7cd35c002881e31bca96e8780ff37(700x700)/thumb.jpg"
-                floatText="霸王餐"
-                bottomText="自助餐"
-                personCount="3.4万人气"
-                style={{
-                    fontSize: 11,
-                    color: 'black',
-                    fontWeight: 'bold'
-                }}
-            />
-        </View>
-
         )
     },
     /**
      * 渲染美味底部View
+     * @param data
      */
-    renderDeliciousBottomView(){
-        return(
-            <View style={{marginLeft:42,marginTop:10}}>
-                <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
-                    <Text>优质美食 品味生活</Text>
-                    <Text>////////////////////////////</Text>
+    renderDeliciousBottomView(data){
+        return (
+            <View style={{marginLeft: 42, marginTop: 10}}>
+                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <Text>{data.fenggeText}</Text>
+                    <Text style={{height: 10}}>{data.fenggeCode}</Text>
                 </View>
-                <PreferentailListItem/>
 
-                <PreferentailListItem/>
+                {/**渲染条目**/}
+                {this.renderPreferentailLisView(data.listImtes)}
 
-                <View style={{height:0.8,backgroundColor:'#dddddd',marginTop:7}}></View>
+                <View style={{height: 0.8, backgroundColor: '#dddddd', marginTop: 7}}></View>
                 <View style={{flexDirection: 'row', justifyContent: 'flex-end', flex: 1, marginTop: 10}}>
-                    <TextAndArrowRightView
-                        title="查看更多"
-                    />
+                    <TextAndArrowRightView title={data.bottomMore}/>
                 </View>
-
             </View>
-        ) ;
+        );
+    },
+
+    /**
+     * 渲染顶部的三线图片信息View
+     */
+    renderDeliciousImgView(imageInfos){
+        //声明存放三张图片信息View的数组
+        var imageInfoViews = [];
+
+        for (var i = 0; i < imageInfos.length; i++) {
+            imageInfoViews.push(
+                <DeliciousImgView key={i}
+                                  imgUrl={imageInfos[i].topImgUrl}
+                                  floatText={imageInfos[i].floatViewText}
+                                  bottomText={imageInfos[i].bottomText}
+                                  personCount={imageInfos[i].personCount}
+                                  style={{
+                                      fontSize: 14,
+                                      color: 'black',
+                                      fontWeight: 'bold',
+                                  }}
+                                  tofloatViewBgColor={imageInfos[i].floatViewColor}
+                />
+            )
+        }
+        return imageInfoViews;
+    },
+    /**
+     * 渲染顶部三个列表项,每项两条的布局
+     * @param itemDatas 每个我要上的数据
+     * @returns {XML}
+     */
+    renderPreferentailLisView(itemDatas){
+        //存放每个View的数组
+        var itemView = [];
+        for (let i = 0; i < itemDatas.length; i++) {
+            itemView.push(
+                <PreferentailListItem key={i}
+                                      itemImgUrl={itemDatas[i].itemImgUrl}
+                                      itemName={itemDatas[i].itemName}
+                                      itemKm={itemDatas[i].itemKm}
+                                      itemAddress={itemDatas[i].itemAddress}
+                                      itemZheHouPrice={itemDatas[i].itemZheHouPrice}
+                                      itemZheKou={itemDatas[i].itemZheKou}
+                                      itemYuanPrice={itemDatas[i].itemYuanPrice}
+                                      itemHaoPingPersent={itemDatas[i].itemHaoPingPersent}/>
+            )
+        }
+        return itemView;
     }
 });
 
@@ -267,6 +370,5 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 });
-
 
 module.exports = Preferentail

@@ -39,7 +39,6 @@ var CategoryView = require('./CategoryView');
 
 import  ListItemView from './ListItemView' ;
 
-
 var Food = React.createClass({
 
     getInitialState(){
@@ -62,14 +61,12 @@ var Food = React.createClass({
                 {this.renderTitleBar()}
                 <ScrollView
                     showsVerticalScrollIndicator={false}
-                    stickyHeaderIndices={[1]}
-                >
+                    stickyHeaderIndices={[1]}>
                     <View style={styles.gridViewStyle}>
                         {this.renderGirdView()}
                     </View>
                     {/**中间分类的布局*/}
                     {this.renderCategoryView()}
-
                     <ListView
                         dataSource={this.state.dataSource}
                         renderRow={this.renderRow}>
@@ -85,7 +82,7 @@ var Food = React.createClass({
                     activeOpacity={0.5}
                     onPress={()=>this.popFood()}>
                     <View style={{width: 30}}>
-                        <Image source={{uri:'food_ic_back_u'}} style={{width:15,height:15}}></Image>
+                        <Image source={{uri: 'food_ic_back_u'}} style={{width: 15, height: 15}}></Image>
                     </View>
                 </TouchableOpacity>
 
@@ -156,21 +153,25 @@ var Food = React.createClass({
         return (
             <View style={styles.categoryViewStyle}>
                 <CategoryView
-                    title="附近"
-                ></CategoryView>
+                    title="附近"/>
                 <CategoryView
-                    title="美食"
-                ></CategoryView>
+                    title="美食"/>
                 <CategoryView
-                    title="智能排序"
-                ></CategoryView>
+                    title="智能排序"/>
                 <CategoryView
-                    title="筛选"
-                ></CategoryView>
+                    title="筛选"/>
             </View>
 
         );
     },
+    /**
+     * 渲染食品条目列表
+     * @param rowData
+     * @param sectionID
+     * @param rowID
+     * @param highlightRow
+     * @returns {XML}
+     */
     renderRow(rowData, sectionID, rowID, highlightRow){
         return (
             <TouchableOpacity
@@ -178,14 +179,14 @@ var Food = React.createClass({
                 onPress={()=> {
                     ToastAndroid.show('你点击了 ' + rowID, ToastAndroid.SHORT)
                 }}>
-                {this.renderListItemView(rowData,rowID)}
+                {this.renderListItemView(rowData, rowID)}
             </TouchableOpacity>
         );
     },
     //渲染每一个条目,如果是第一条的话,那么没有marginTop
-    renderListItemView:function (rowData,rowID) {
-        if(rowID==0){
-            return(
+    renderListItemView: function (rowData, rowID) {
+        if (rowID == 0) {
+            return (
                 <View>
                     <ListItemView
                         itemRenderIcon="zuliaoanmo"
@@ -197,9 +198,9 @@ var Food = React.createClass({
                     </ListItemView>
                 </View>
             );
-        }else{
-            return(
-                <View style={{marginTop:3}}>
+        } else {
+            return (
+                <View style={{marginTop: 3}}>
                     <ListItemView
                         itemRenderIcon="zuliaoanmo"
                         itemLeftTitle='聚宾楼烤鸭'
@@ -276,8 +277,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingTop: 10,
         paddingBottom: 10,
-        borderBottomWidth:0.8,
-        borderBottomColor:'#dddddd'
+        borderBottomWidth: 0.8,
+        borderBottomColor: '#dddddd'
     }
 });
 

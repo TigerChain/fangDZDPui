@@ -12,8 +12,11 @@ import {
     ScrollView
 } from 'react-native'
 
+//引入列表条目组件
 var CommonListItem = require('../common/CommonListItem');
-var ImageWithText = require('../common/ImageWithText') ;
+//导入图片描述组件
+var ImageWithText = require('../common/ImageWithText');
+
 var Mine = React.createClass({
 
     render(){
@@ -35,22 +38,22 @@ var Mine = React.createClass({
                     </View>
 
                     {/**我的点评等布局**/}
-                <View style={styles.imgViewStyle}>
-                    <ImageWithText
-                        imgRes="main_my_dianping_user_icon_normal"
-                        imgDes="我的点评"
-                    />
+                    <View style={styles.imgViewStyle}>
+                        <ImageWithText
+                            imgRes="main_my_dianping_user_icon_normal"
+                            imgDes="我的点评"
+                        />
 
-                    <ImageWithText
-                        imgRes="main_my_favorite_user_icon_normal"
-                        imgDes="我的收藏"
-                    />
+                        <ImageWithText
+                            imgRes="main_my_favorite_user_icon_normal"
+                            imgDes="我的收藏"
+                        />
 
-                    <ImageWithText
-                        imgRes="main_my_coupon_user_icon_normal"
-                        imgDes="我的团购卷"
-                    />
-                </View>
+                        <ImageWithText
+                            imgRes="main_my_coupon_user_icon_normal"
+                            imgDes="我的团购卷"
+                        />
+                    </View>
                     <View style={{marginTop: 15}}>
                         <CommonListItem
                             itemLeftIcon="main_index_home_normal"
@@ -152,15 +155,15 @@ const styles = StyleSheet.create({
         height: 22,
         marginRight: 10
     },
-    imgViewStyle:{
-        flexDirection:'row',
-        alignItems:'center',
-        backgroundColor:'white',
-        paddingTop:5,
-        paddingBottom:5,
-        borderBottomWidth:0.5,
-        borderBottomColor:'#eeeeee',
-
-    },
+    imgViewStyle: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        paddingTop: 5,
+        paddingBottom: 5,
+        borderBottomWidth: 0.5,
+        borderBottomColor: '#eeeeee',
+    }
 });
+
 module.exports = Mine

@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 var CommonListItem = React.createClass({
-
+    
     getDefaultProps(){
         return{
             //左边按钮
@@ -47,15 +47,22 @@ var CommonListItem = React.createClass({
             </View>
         );
     },
+    /**
+     * 渲染左边的View
+     * @returns {XML}
+     */
     renderLeftView:function () {
         return(
             <View style={styles.itemLeftViewStyle}>
                 {this.renderLeftIconSise()}
                 <Text style={{marginLeft:5,color:'black',fontSize:16}}>{this.props.itemLeftTitle}</Text>
-
             </View>
         );
     },
+    /**
+     * 渲染左边图片的方法
+     * @returns {XML}
+     */
     renderLeftIconSise:function () {
         //如果设置了图片的大小 就按设置的走,否则就是默认的大小
         if(this.props.itemLeftIconStyle.length!=0){
@@ -64,6 +71,10 @@ var CommonListItem = React.createClass({
            return(<Image source={{uri:this.props.itemLeftIcon}} style={{width:20,height:20}}/>);
         }
     } ,
+    /**
+     * 渲染右边的View
+     * @returns {XML}
+     */
     renderRightView:function () {
         return(
             <View style={styles.itemRightViewStyle}>
@@ -72,6 +83,10 @@ var CommonListItem = React.createClass({
             </View>
         );
     },
+    /**
+     * 渲染右边标题View
+     * @returns {XML}
+     */
     isRenderRightTitle:function () {
         //如果右边有文字则 渲染
         if(this.props.itemRightTitle.length!=0){
@@ -81,26 +96,19 @@ var CommonListItem = React.createClass({
 });
 
 const  styles = StyleSheet.create({
-    //条目根布局
-    // rootItemViewStyle:{
-    //     flexDirection:'row',
-    //     justifyContent:'space-between',
-    //     backgroundColor:'white',
-    //     height:40,
-    //     borderBottomColor:'#eeeeee',
-    //     borderBottomWidth:0.7
-    // },
+
+    //条目右边的View样式
     itemRightViewStyle:{
         flexDirection:'row',
         alignItems:'center',
         marginRight:8
     },
+    //条目有左边的View样式
     itemLeftViewStyle:{
         flexDirection:'row',
         alignItems:'center',
         marginLeft:8
     }
 });
-
 
 module.exports = CommonListItem
