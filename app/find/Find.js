@@ -20,24 +20,29 @@ var screenWidth = Dimensions.get('window').width;
 
 import FindArrowView from '../common/FindArrowView' ;
 
+import FindImageAndText from '../common/FindImageAndText';
 
 class Find extends React.Component{
   render(){
     return(
-        <ScrollView>
-      <View style={styles.container}>
-          {this._renderTitleBar()}
-          <FindArrowView
-            leftTitle={'好友去哪'}
-            rightTitle={'去绑定送红包'}
-            isShowClickShadow={true}
-            paddingBottom={25}
-            onItemClick={this.onItemClick}
-            id={1}
-            />
-          {/* 探好店的布局 */}
-          {this._renderSearchGoodDian()}
-      </View>
+      <ScrollView>
+        <View style={styles.container}>
+            {this._renderTitleBar()}
+              <FindArrowView
+                leftTitle={'好友去哪'}
+                rightTitle={'去绑定送红包'}
+                isShowClickShadow={true}
+                paddingBottomAndTop={20}
+                onItemClick={this.onItemClick}
+                id={1}
+                />
+            {/* 探好店的布局 */}
+            {this._renderSearchGoodDian()}
+            {/* 推荐菜的布局 */}
+            {this._renderRecommendFoodView() }
+            {/* 榜单布局 */}
+            {this._renderBangDanView()}
+        </View>
       </ScrollView>
     ) ;
   }
@@ -71,10 +76,75 @@ class Find extends React.Component{
           onItemClick={this.onItemClick}
           id={2}
           />
+        <View style={{flexDirection:'row',margin:-4}}>
+            {this._renderSerchGoodDianImg()}
+        </View>
       </View>
     ) ;
   }
 
+_renderSerchGoodDianImg(){
+  let views = [] ;
+  for(let i=0 ;i <2 ;i++){
+    views.push(
+      <FindImageAndText
+        key={i}
+        mainText={'测试1'}
+        subText={'测试2'}
+        />
+    )
+  }
+  return views ;
+}
+
+/**
+ * 推荐菜布局
+ */
+_renderRecommendFoodView(){
+  return(
+    <View style={styles.searchGoodViewStyle}>
+      <FindArrowView
+        leftTitle={'推荐菜'}
+        rightTitle={'全部8道推荐菜'}
+        isShowClickShadow={false}
+        onItemClick={this.onItemClick}
+        id={3}
+        />
+      <View style={{flexDirection:'row',margin:-4}}>
+          {this._renderRecommendFoodImg()}
+      </View>
+    </View>
+  ) ;
+}
+
+_renderRecommendFoodImg(){
+  let views = [] ;
+  for(let i=0 ;i <3 ;i++){
+    views.push(
+      <FindImageAndText
+        key={i}
+        mainText={'测试1'}
+        />
+    )
+  }
+  return views ;
+}
+/**
+ * 渲染榜单布局
+ */
+_renderBangDanView(){
+  return(
+    <View style={styles.searchGoodViewStyle}>
+      <FindArrowView
+        leftTitle={'榜单'}
+        rightTitle={'全部529个榜单'}
+        isShowClickShadow={false}
+        onItemClick={this.onItemClick}
+        id={4}
+        />
+    </View>
+  )
+}
   onItemClick(id){
     alert(id);
     switch (id) {
@@ -129,7 +199,10 @@ const styles = StyleSheet.create({
     //探好店的根view布局
     searchGoodViewStyle:{
       backgroundColor:'#fff',
-      marginTop:10
+      marginTop:10,
+      paddingLeft:10,
+      paddingRight:10,
+      paddingBottom:10
     }
 });
 

@@ -39,7 +39,7 @@ export default class FindArrowView extends React.Component {
       <TouchableOpacity
         activeOpacity={this.props.isShowClickShadow?0.5:1}
         onPress={this.onClick.bind(this)}>
-      <View style={[styles.rootViewStyle,{paddingBottom:this.props.paddingBottomAndTop,paddingTop:this.props.paddingBottomAndTop}]}>
+      <View style={[styles.rootViewStyle,{paddingBottom:this.props.paddingBottomAndTop,paddingTop:this.props.paddingBottomAndTop},this.props.id===1?styles.rootViewPaddingStyle:null]}>
           <Text style={styles.leftTitleStyle}>{this.props.leftTitle}</Text>
           <View style={styles.rightViewStyle}>
               <Text style={styles.rightTitleStyle}>{this.props.rightTitle}</Text>
@@ -63,11 +63,13 @@ const styles = StyleSheet.create({
  rootViewStyle:{
    flexDirection:'row',
    backgroundColor:'#fff',
-   paddingLeft:10,
-   paddingRight:10,
    alignItems:'center',
    justifyContent:'space-between'
 
+ },
+ rootViewPaddingStyle:{
+   paddingRight:10,
+   paddingLeft:10
  },
  //左边文字的样式
  leftTitleStyle:{
@@ -83,4 +85,5 @@ const styles = StyleSheet.create({
  rightTitleStyle:{
    color:'#ccc'
  }
+
 }) ;
